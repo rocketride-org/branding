@@ -1,0 +1,115 @@
+/* Generated from rocketride.tokens.json by tokens/gen_css.py. Do not hand-edit.
+   Regenerate and diff to verify:  python tokens/gen_css.py tokens/rocketride.tokens.json | diff - tokens/rocketride.css
+
+   Status: the interaction, status, and dark groups are proposed and await design review.
+   Every contrast ratio in the source JSON is computed, not estimated. */
+
+:root {
+  /* Brand */
+  --rr-brand: #f93822;
+  --rr-accent: var(--rr-brand);
+
+  /* Surface */
+  --rr-bg: #ffffff;
+  --rr-surface-alt: #fafafa;
+  --rr-widget: #f3f3f3;
+
+  /* Text */
+  --rr-text-primary: #1a1a1a;
+  --rr-text-secondary: #666666;
+
+  /* Border. border-default is a decorative divider only at 1.37:1. Use border-strong for anything a user interacts with. */
+  --rr-border: #dcdcdc;
+  --rr-border-strong: #8c8c8c;
+
+  /* Button. Primary is INK filled with an offset accent block, not accent filled. White on the accent is 3.74:1 and fails AA for a normal-size label. */
+  --rr-btn-primary-bg: #12111a;
+  --rr-btn-primary-fg: #ffffff;
+  --rr-btn-primary-bg-hover: #24222f;
+  --rr-btn-primary-bg-active: #0a0910;
+  --rr-btn-primary-accent-block: var(--rr-accent);
+  --rr-btn-primary-accent-block-offset: 0.30;
+
+  /* Interaction. Proposed, awaiting design review. */
+  --rr-accent-hover: #e0321f;
+  --rr-accent-active: #c72d1b;
+  --rr-accent-subtle: #feebe9;
+  --rr-widget-hover: #ececec;
+  --rr-disabled-bg: #f3f3f3;
+  --rr-disabled-fg: #9a9a9a;
+  --rr-focus-ring: var(--rr-accent);
+  --rr-focus-ring-halo: #ffffff;
+  --rr-focus-ring-width: 2px;
+  --rr-focus-ring-offset: 2px;
+
+  /* Status. Proposed, awaiting design review. The brand accent is red, so status must never be conveyed by color alone. */
+  --rr-error: #b3231b;
+  --rr-error-subtle: #fdecea;
+  --rr-error-on-fill: #ffffff;
+  --rr-warning: #8a5300;
+  --rr-warning-subtle: #fdf3e0;
+  --rr-warning-on-fill: #ffffff;
+  --rr-success: #146c43;
+  --rr-success-subtle: #e7f4ee;
+  --rr-success-on-fill: #ffffff;
+  --rr-info: #0b5cad;
+  --rr-info-subtle: #e8f1fb;
+  --rr-info-on-fill: #ffffff;
+
+  /* Illustration. Applies to generated art, not to UI chrome. */
+  --rr-ink: #12111a;
+  --rr-ground: #eeede7;
+
+  /* Logo. Reconciled with brand in v2.0 - the red IS the brand color. */
+  --rr-logo-red: var(--rr-brand);
+  --rr-logo-ink: #12111a;
+  --rr-logo-offwhite: #fafbf8;
+}
+
+/* Dark theme. Same property names, so consuming code never branches on theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --rr-brand: #fa4c38;
+    --rr-accent: #fa4c38;
+    --rr-bg: #12111a;
+    --rr-surface-alt: #1a1924;
+    --rr-widget: #232130;
+    --rr-text-primary: #f4f3f0;
+    --rr-text-secondary: #a3a0ad;
+    --rr-border: #35323f;
+    --rr-border-strong: #757183;
+    --rr-btn-primary-bg: #fa4c38;
+    --rr-btn-primary-fg: #12111a;
+    --rr-error: #ff6b5e;
+    --rr-warning: #e0a33a;
+    --rr-success: #4fbf8b;
+    --rr-info: #5aa9f0;
+    --rr-focus-ring: #fa4c38;
+    --rr-focus-ring-halo: #12111a;
+    --rr-ink: #eeede7;
+    --rr-ground: #12111a;
+  }
+}
+
+/* Explicit choice wins over the system preference in both directions. */
+:root[data-theme="dark"] {
+  --rr-brand: #fa4c38;
+  --rr-accent: #fa4c38;
+  --rr-bg: #12111a;
+  --rr-surface-alt: #1a1924;
+  --rr-widget: #232130;
+  --rr-text-primary: #f4f3f0;
+  --rr-text-secondary: #a3a0ad;
+  --rr-border: #35323f;
+  --rr-border-strong: #757183;
+  --rr-btn-primary-bg: #fa4c38;
+  --rr-btn-primary-fg: #12111a;
+  --rr-error: #ff6b5e;
+  --rr-warning: #e0a33a;
+  --rr-success: #4fbf8b;
+  --rr-info: #5aa9f0;
+  --rr-focus-ring: #fa4c38;
+  --rr-focus-ring-halo: #12111a;
+  --rr-ink: #eeede7;
+  --rr-ground: #12111a;
+}

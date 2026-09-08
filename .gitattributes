@@ -1,0 +1,12 @@
+# Keep text files LF in the working tree, so the generated-CSS diff in README.md
+# rule 2 gives the same result on every platform. Without this, a Windows clone gets
+# CRLF on disk while gen_css.py emits LF, and the check fails for no real reason.
+*.css   text eol=lf
+*.json  text eol=lf
+*.py    text eol=lf
+*.svg   text eol=lf
+*.md    text eol=lf
+
+# Binary, never touched.
+*.png   binary
+*.jpg   binary
