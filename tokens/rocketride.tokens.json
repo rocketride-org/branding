@@ -1,0 +1,221 @@
+{
+  "$schema": "https://design-tokens.org/schema.json",
+  "$description": "RocketRide color tokens. Source of truth for all color values. Light and dark.",
+  "$version": "2.0.0",
+  "$status": "Light theme and logo values are as-shipped and verified. The interaction, status, and dark groups are marked $status: proposed and await design review. See _unresolved before treating this file as complete.",
+  "$contrast": "Every ratio quoted in a description is computed, not estimated. Re-run the checker described in MIGRATION.md after any edit.",
+
+  "brand": {
+    "brand": {
+      "value": "#f93822",
+      "type": "color",
+      "description": "Primary brand color. Sampled from the shipping cloud.rocketride.ai hero. This is the logo red, promoted to brand in v2.0 - see the resolved logo decision in README.md."
+    },
+    "accent": {
+      "value": "{brand.brand}",
+      "type": "color",
+      "description": "Same as brand. Kept as a separate token so accent can diverge later without a find and replace."
+    }
+  },
+
+  "surface": {
+    "bg": { "value": "#ffffff", "type": "color", "description": "Page background" },
+    "surfaceAlt": { "value": "#fafafa", "type": "color", "description": "Alternating section background" },
+    "widget": { "value": "#f3f3f3", "type": "color", "description": "Cards, panels, inset blocks" }
+  },
+
+  "text": {
+    "primary": { "value": "#1a1a1a", "type": "color", "description": "17.40:1 on surface.bg" },
+    "secondary": { "value": "#666666", "type": "color", "description": "5.74:1 on surface.bg, 5.17:1 on surface.widget. Passes AA on every light surface in this file." }
+  },
+
+  "border": {
+    "default": {
+      "value": "#dcdcdc",
+      "type": "color",
+      "description": "Decorative divider only. 1.37:1 on surface.bg, far below the 3:1 required for a meaningful UI boundary. Do not use it for input or control outlines - use border.strong."
+    },
+    "strong": {
+      "value": "#8c8c8c",
+      "type": "color",
+      "description": "Interactive component boundaries: inputs, checkboxes, control outlines. 3.36:1 on surface.bg and 3.03:1 on surface.widget, so it clears the 3:1 non-text minimum on both."
+    }
+  },
+
+  "button": {
+    "$description": "The primary button is ink-filled with an offset accent block. It is NOT accent-filled, and that is deliberate: white on brand.accent is only 3.74:1, which fails the 4.5:1 a normal-size label needs. Ink fill gives 18.74:1. The accent survives as a hard offset block behind the button, which carries no text and so has no contrast obligation. This is the construction the shipping hero already uses.",
+    "primaryBg": { "value": "{illustration.ink}", "type": "color", "description": "#12111a. White label measures 18.74:1." },
+    "primaryFg": { "value": "#ffffff", "type": "color" },
+    "primaryBgHover": { "value": "#24222f", "type": "color", "$status": "proposed" },
+    "primaryBgActive": { "value": "#0a0910", "type": "color", "$status": "proposed" },
+    "primaryAccentBlock": {
+      "value": "{brand.accent}",
+      "type": "color",
+      "description": "Hard-edged block offset down-left behind the button at 30% of the label type size. No rounded corners, no soft shadow, no text on it."
+    },
+    "primaryAccentBlockOffset": {
+      "value": "0.30",
+      "type": "number",
+      "description": "Offset as a fraction of the label type size, applied both down and left."
+    }
+  },
+
+  "interaction": {
+    "$description": "Applies to links and accent-filled controls. The primary button uses the button group instead.",
+    "$status": "proposed",
+    "accentHover": { "value": "#e0321f", "type": "color", "description": "brand.accent darkened 10 percent. 4.52:1 on surface.bg." },
+    "accentActive": { "value": "#c72d1b", "type": "color", "description": "brand.accent darkened 20 percent. 5.50:1 on surface.bg." },
+    "accentSubtle": { "value": "#feebe9", "type": "color", "description": "Tinted background for accent-flavored callouts. text.primary on it is 15.15:1." },
+    "widgetHover": { "value": "#ececec", "type": "color" },
+    "disabledBg": { "value": "#f3f3f3", "type": "color" },
+    "disabledFg": {
+      "value": "#9a9a9a",
+      "type": "color",
+      "description": "2.54:1 on disabledBg. Below AA by design - WCAG exempts disabled controls. Never rely on the disabled color alone to convey state."
+    },
+    "focusRing": { "value": "{brand.accent}", "type": "color", "description": "3.74:1 on surface.bg, clearing the 3:1 non-text minimum." },
+    "focusRingHalo": {
+      "value": "#ffffff",
+      "type": "color",
+      "description": "Inner halo drawn between the control and the ring, so one focus construction reads on both light and dark surfaces. Flips to dark.focusRingHalo in dark theme."
+    },
+    "focusRingWidth": { "value": "2px", "type": "dimension" },
+    "focusRingOffset": { "value": "2px", "type": "dimension" }
+  },
+
+  "status": {
+    "$description": "The brand accent IS red, so error must be a visibly different red and must never be the only signal - always pair status with an icon or a text label. status.error against brand.accent measures only 1.77:1, which is why iconography is mandatory rather than encouraged. warning is deliberately pushed to a dark amber, well clear of the retired orange #f7901f and of brand.accent, for the same reason. Horizon Blue #41b6e6 from the superseded palette is far too light to serve as info text and is not used.",
+    "$status": "proposed",
+    "error": { "value": "#b3231b", "type": "color", "description": "6.62:1 on surface.bg" },
+    "errorSubtle": { "value": "#fdecea", "type": "color" },
+    "errorOnFill": { "value": "#ffffff", "type": "color", "description": "6.62:1 on status.error" },
+    "warning": { "value": "#8a5300", "type": "color", "description": "6.33:1 on surface.bg" },
+    "warningSubtle": { "value": "#fdf3e0", "type": "color" },
+    "warningOnFill": { "value": "#ffffff", "type": "color", "description": "6.33:1 on status.warning" },
+    "success": { "value": "#146c43", "type": "color", "description": "6.45:1 on surface.bg" },
+    "successSubtle": { "value": "#e7f4ee", "type": "color" },
+    "successOnFill": { "value": "#ffffff", "type": "color", "description": "6.45:1 on status.success" },
+    "info": { "value": "#0b5cad", "type": "color", "description": "6.67:1 on surface.bg" },
+    "infoSubtle": { "value": "#e8f1fb", "type": "color" },
+    "infoOnFill": { "value": "#ffffff", "type": "color", "description": "6.67:1 on status.info" }
+  },
+
+  "illustration": {
+    "$description": "Applies to generated art, not to UI chrome. Both values were sampled off the shipping hero, not carried over from the draft token file.",
+    "ink": { "value": "#12111a", "type": "color", "description": "Linework in minimalist-stipple assets" },
+    "ground": {
+      "value": "#eeede7",
+      "type": "color",
+      "description": "Flat background in minimalist-stipple assets. Warmer than surface.bg on purpose so art reads as art, not as a UI panel that failed to load. brand.accent on it is 3.19:1 - large text only."
+    },
+    "inkDark": {
+      "value": "#eeede7",
+      "type": "color",
+      "$status": "proposed",
+      "description": "Dark theme inverts the art: the ground value becomes the ink. Assets must be INVERTED, not recolored - recoloring the ink to light while leaving the ground light produces an unreadable asset."
+    },
+    "groundDark": { "value": "#12111a", "type": "color", "$status": "proposed" }
+  },
+
+  "logo": {
+    "$description": "Reconciled with brand in v2.0. The red is no longer an exception - it IS the brand color. Abyss Blue #1e1a34 from the superseded palette has been retired out of the SVGs in favor of logo.ink.",
+    "red": { "value": "{brand.brand}", "type": "color", "description": "Was a standalone logo-only exception. Now an alias, because brand.brand was set to this value." },
+    "ink": { "value": "{illustration.ink}", "type": "color", "description": "#12111a. Replaces Abyss Blue #1e1a34 in rocketride-logo-color.svg and rocketride-icon-color.svg." },
+    "offWhite": { "value": "#fafbf8", "type": "color", "description": "Used in the white logo variants" }
+  },
+
+  "dark": {
+    "$description": "Dark theme. Derived, not sampled - no dark reference design exists yet, so every value here is a proposal for review. The page ground is the brand's own ink, so dark mode is built from the brand rather than from neutral grey.",
+    "$status": "proposed",
+    "bg": { "value": "{illustration.ink}", "type": "color", "description": "#12111a" },
+    "surfaceAlt": { "value": "#1a1924", "type": "color" },
+    "widget": { "value": "#232130", "type": "color" },
+    "textPrimary": { "value": "#f4f3f0", "type": "color", "description": "16.89:1 on dark.bg, 14.21:1 on dark.widget" },
+    "textSecondary": { "value": "#a3a0ad", "type": "color", "description": "7.31:1 on dark.bg, 6.15:1 on dark.widget" },
+    "borderDefault": { "value": "#35323f", "type": "color", "description": "Decorative divider only, 1.50:1 on dark.bg." },
+    "borderStrong": { "value": "#757183", "type": "color", "description": "3.97:1 on dark.bg and 3.34:1 on dark.widget, clearing the 3:1 non-text minimum on both." },
+    "accent": {
+      "value": "#fa4c38",
+      "type": "color",
+      "description": "brand.accent lightened 10 percent for dark surfaces. The pure brand red reaches only 4.22:1 on dark.widget, which fails AA for normal text; this variant reaches 4.62:1 there and 5.49:1 on dark.bg. The alternative was darkening dark.widget until the pure red passed, which cost the surface hierarchy its visible separation. Documented rather than hidden - see _unresolved."
+    },
+    "buttonPrimaryBg": {
+      "value": "{dark.accent}",
+      "type": "color",
+      "description": "Dark theme inverts the button construction: accent fill with an ink label, 5.49:1. Red performs better on dark than on light, so the ink-fill workaround the light theme needs is unnecessary here."
+    },
+    "buttonPrimaryFg": { "value": "{illustration.ink}", "type": "color" },
+    "error": { "value": "#ff6b5e", "type": "color", "description": "6.71:1 on dark.bg, 5.64:1 on dark.widget" },
+    "warning": { "value": "#e0a33a", "type": "color", "description": "8.45:1 on dark.bg, 7.11:1 on dark.widget" },
+    "success": { "value": "#4fbf8b", "type": "color", "description": "8.17:1 on dark.bg, 6.88:1 on dark.widget" },
+    "info": { "value": "#5aa9f0", "type": "color", "description": "7.47:1 on dark.bg, 6.28:1 on dark.widget" },
+    "focusRing": { "value": "{dark.accent}", "type": "color" },
+    "focusRingHalo": { "value": "{dark.bg}", "type": "color" }
+  },
+
+  "_deprecated": {
+    "$description": "Retired values. Recorded so nobody reintroduces them from an old deck, an old SVG, or the palette PNG in deprecated/.",
+    "items": [
+      {
+        "value": "#f7901f",
+        "name": "brand orange",
+        "retiredIn": "2.0.0",
+        "reason": "Was brand.brand in the 0.1.0 draft. Never shipped. Measures 2.00:1 on illustration.ground, so it cannot serve as an accent word at any size, and the product was already shipping #f93822 in that role. Replaced by brand.brand."
+      },
+      {
+        "value": "#1e1a34",
+        "name": "Abyss Blue",
+        "retiredIn": "2.0.0",
+        "reason": "From the superseded palette in deprecated/Palette.png. Was the wordmark and rocket color in the logo SVGs, which made the logo the last artifact in the repo built on the old system. Replaced by logo.ink."
+      },
+      {
+        "value": "#0a0a0a",
+        "name": "draft illustration ink",
+        "retiredIn": "2.0.0",
+        "reason": "Draft value, never sampled. The shipping hero uses #12111a. Replaced by illustration.ink."
+      },
+      {
+        "value": "#eceae3",
+        "name": "draft illustration ground",
+        "retiredIn": "2.0.0",
+        "reason": "Draft value, never sampled. The shipping hero uses #eeede7. Replaced by illustration.ground."
+      },
+      {
+        "value": "#222223",
+        "name": "Deep Graphite",
+        "retiredIn": "2.0.0",
+        "reason": "From the superseded palette. Used nowhere in the repo."
+      },
+      {
+        "value": "#5f2167",
+        "name": "Night Amethyst",
+        "retiredIn": "2.0.0",
+        "reason": "From the superseded palette. Used nowhere in the repo."
+      },
+      {
+        "value": "#370b7a",
+        "name": "Imperial Indigo",
+        "retiredIn": "2.0.0",
+        "reason": "From the superseded palette. Used nowhere in the repo."
+      },
+      {
+        "value": "#41b6e6",
+        "name": "Horizon Blue",
+        "retiredIn": "2.0.0",
+        "reason": "From the superseded palette. Used nowhere in the repo, and too light to serve as status.info text."
+      }
+    ]
+  },
+
+  "_unresolved": {
+    "$description": "Known gaps. Fill these before anyone treats this file as complete.",
+    "items": [
+      "Text tertiary and muted levels. The superseded sheet had four text levels, this file documents two.",
+      "The interaction, status, and dark groups are all marked $status: proposed. Contrast is verified but the hues have had no design review.",
+      "illustration.ink and illustration.ground describe the intended system, not the delivered assets. The 20 committed minimalist-stipple tiles are near-black on a non-uniform near-white plate sampling #f1f1f1 to #ffffff, not #12111a on #eeede7. Compositing them onto illustration.ground needs an alpha knockout, not a background swap. See styles/minimalist-stipple/STYLE.md.",
+      "dark.accent is not brand.accent. That divergence is a contrast necessity, not a design choice, and should be reviewed alongside the dark theme.",
+      "Typography, spacing, radius, and elevation are entirely absent. This file is color only.",
+      "Whether the trademark mark on the wordmark should be TM or R, and whether it belongs on the icon variants too. Not answerable from this repo."
+    ]
+  }
+}
